@@ -1,0 +1,18 @@
+{
+	"extension": {
+		"version": "0.6.0",
+		"json": 2
+	},
+	"project": {
+		"name": "SupremeTegu2024-2025",
+		"description": "",
+		"creationDate": "9/5/2024, 8:04:51 AM",
+		"platform": "V5",
+		"language": "python",
+		"slot": 1,
+		"sdkVersion": "V5_1_0_1_19",
+		"python": {
+			"main": "src/main.py"
+		}
+	}
+}
