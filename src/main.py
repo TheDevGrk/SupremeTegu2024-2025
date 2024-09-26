@@ -15,33 +15,28 @@ brain=Brain()
 
 controller = Controller()
 
-leftOne = Motor(Ports.PORT1)
-leftTwo = Motor(Ports.PORT2)
-rightOne = Motor(Ports.PORT3)
-rightTwo = Motor(Ports.PORT4)
+rightFront = Motor(Ports.PORT1)
+rightBack = Motor(Ports.PORT2)
+leftFront = Motor(Ports.PORT3)
+leftBack = Motor(Ports.PORT4)
 
 speed = 100
 
 def driveTask():
     while True:
-        driveStraight = controller.axis3.position()
-        driveTurn = controller.axis1.position()
+        driveStraight = controller.axis1.position()
+        driveTurn = controller.axis3.position()
+
         if driveTurn == 0:
-            leftOne.spin(FORWARD, driveStraight, PERCENT)
-            leftTwo.spin(FORWARD, driveStraight, PERCENT)
-            rightOne.spin(FORWARD, driveStraight, PERCENT)
-            rightTwo.spin(FORWARD, driveStraight, PERCENT)
-        elif driveTurn < 0:
-            driveTurn = abs(driveTurn)
-            leftOne.spin(FORWARD, driveTurn, PERCENT)
-            leftTwo.spin(FORWARD, driveTurn, PERCENT)
-            rightOne.spin(FORWARD, driveTurn * 0.6, PERCENT)
-            rightTwo.spin(FORWARD, driveTurn * 0.6, PERCENT)
-        elif driveTurn > 0:
-            leftOne.spin(FORWARD, driveTurn * 0.6, PERCENT)
-            leftTwo.spin(FORWARD, driveTurn * 0.6, PERCENT)
-            rightOne.spin(FORWARD, driveTurn, PERCENT)
-            rightTwo.spin(FORWARD, driveTurn, PERCENT)
+            rightFront.spin(FORWARD, driveStraight, PERCENT)
+            rightBack.spin(REVERSE, driveStraight, PERCENT)
+            leftBack.spin(FORWARD, driveStraight, PERCENT)
+            leftFront.spin(REVERSE, driveStraight, PERCENT)
+        else:
+            rightFront.spin(FORWARD, driveTurn, PERCENT)
+            rightBack.spin(REVERSE, driveTurn, PERCENT)
+            leftFront.spin(REVERSE, driveTurn, PERCENT)
+            leftBack.spin(FORWARD, driveTurn, PERCENT)
             
 
 
